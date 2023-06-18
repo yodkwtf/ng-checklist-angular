@@ -33,40 +33,6 @@ AngularJS is the first version of Angular. It was released in 2010 and is also k
 - Array methods (forEach, map, filter, reduce, etc)
 - Fetch API and HTTP (GET, POST, PUT, DELETE, etc)
 
-## Angular Components
-
-- Components are the fundamental building blocks of Angular applications.
-- They display data on the screen, listen for user input, and take action based on that input.
-- A component is a TypeScript class with an HTML template and an optional style sheet.
-- Used to break up the application into smaller pieces of reusable code.
-- Are reusable and can be used in other components.
-
-```ts
-@Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"],
-  services: [PostsService],
-})
-export class AppComponent {
-  /** Properties */
-  title = "my-app";
-}
-```
-
-- The `@Component` decorator specifies the Angular metadata for the component.
-- The `selector` property defines the HTML tag that represents the component (parent component).
-- The `templateUrl` property defines the HTML template for the component.
-- The `styleUrls` property defines the CSS styles for the component.
-- The `services` property defines the services used by the component.
-
-## Angular Services
-
-- Increase modularity and reusability of code.
-- Components can give certain tasks to services and then listen for the result.
-- These tasks can be anything such as fetching data from a server, logging data, or validating user input.
-- This makes components lean and focused on supporting the view, and makes it easy to unit-test components with a mock service.
-
 ## Angular CLI
 
 - Standard tooling for Angular development.
@@ -94,7 +60,32 @@ ng serve
 
 The app will be available at http://localhost:4200
 
-## Working with Components
+## Angular Components
+
+- Components are the fundamental building blocks of Angular applications.
+- They display data on the screen, listen for user input, and take action based on that input.
+- A component is a TypeScript class with an HTML template and an optional style sheet.
+- Used to break up the application into smaller pieces of reusable code.
+- Are reusable and can be used in other components.
+
+```ts
+@Component({
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
+  services: [PostsService],
+})
+export class AppComponent {
+  /** Properties */
+  title = "my-app";
+}
+```
+
+- The `@Component` decorator specifies the Angular metadata for the component.
+- The `selector` property defines the HTML tag that represents the component (parent component).
+- The `templateUrl` property defines the HTML template for the component.
+- The `styleUrls` property defines the CSS styles for the component.
+- The `services` property defines the services used by the component.
 
 ### First Component
 
@@ -377,4 +368,59 @@ export class AppComponent {
 
 ```html
 <fa-icon [icon]="faCoffee"></fa-icon>
+```
+
+## Angular Services
+
+- Increase modularity and reusability of code.
+- Components can give certain tasks to services and then listen for the result.
+- These tasks can be anything such as fetching data from a server, logging data, or validating user input.
+- This makes components lean and focused on supporting the view, and makes it easy to unit-test components with a mock service.
+
+#### Create a new service
+
+```sh
+ng generate service services/task
+```
+
+This will create a new folder called `services/task` with the following files:
+
+- `task.service.ts`
+- `task.service.spec.ts`
+
+### Using a service into a component
+
+###### task.service.ts
+
+```ts
+import { Injectable } from "@angular/core";
+import { Task } from "src/app/interfaces/Task";
+import { TASKS } from "src/app/data/mock-tasks";
+
+@Injectable({
+  providedIn: "root",
+})
+export class TaskService {
+  constructor() {}
+
+  getTasks(): Task[] {
+    return TASKS;
+  }
+}
+```
+
+###### app.component.ts
+
+```ts
+import { TaskService } from "./services/task.service";
+
+export class AppComponent {
+  tasks: Task[] = [];
+
+  constructor(private taskService: TaskService) {}
+
+  ngOnInit(): void {
+    this.tasks = this.taskService.getTasks();
+  }
+}
 ```

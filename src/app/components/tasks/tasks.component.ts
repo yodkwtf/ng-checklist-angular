@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Task } from 'src/app/interfaces/Task';
-import { TASKS } from 'src/app/data/mock-tasks'; // Import the mock data
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-tasks',
@@ -8,5 +8,11 @@ import { TASKS } from 'src/app/data/mock-tasks'; // Import the mock data
   styleUrls: ['./tasks.component.css'],
 })
 export class TasksComponent {
-  tasks: Task[] = TASKS; // Assign the mock data to the tasks property
+  tasks: Task[] = [];
+
+  constructor(private taskService: TaskService) {}
+
+  ngOnInit(): void {
+    this.tasks = this.taskService.getTasks();
+  }
 }
