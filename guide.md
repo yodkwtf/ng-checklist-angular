@@ -424,3 +424,49 @@ export class AppComponent {
   }
 }
 ```
+
+## Observables & RxJS
+
+- Observables are lazy. They don't do anything until something subscribes to them.
+- Observables are able to deliver values either synchronously or asynchronously.
+- Observables are cancelable. When an observer is no longer interested in an Observable, they can unsubscribe and the Observable will stop emitting items.
+
+#### Implementing Observables
+
+###### task.service.ts
+
+```ts
+import { Injectable } from "@angular/core";
+import { Observable, of } from "rxjs";
+import { Task } from "src/app/interfaces/Task";
+import { TASKS } from "src/app/data/mock-tasks";
+
+export class TaskService {
+  constructor() {}
+
+  getTasks(): Observable<Task[]> {
+    const tasks = of(TASKS); // of() converts the TASKS array into an Observable
+    return tasks;
+  }
+}
+```
+
+###### app.component.ts
+
+```ts
+import { TaskService } from "./services/task.service";
+
+export class AppComponent {
+  tasks: Task[] = [];
+
+  constructor(private taskService: TaskService) {}
+
+  ngOnInit(): void {
+    this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
+  }
+}
+```
+
+Here we are subscribing to the `getTasks()` method of the `TaskService` and assigning the result to the `tasks` property of the `AppComponent`. This is an asynchronous operation.
+
+It works similar to the `Promise` object and handling them using `then()` method.
