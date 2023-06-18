@@ -48,10 +48,17 @@ AngularJS is the first version of Angular. It was released in 2010 and is also k
   styleUrls: ["./app.component.css"],
   services: [PostsService],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   /** Properties */
+  title = "my-app";
 }
 ```
+
+- The `@Component` decorator specifies the Angular metadata for the component.
+- The `selector` property defines the HTML tag that represents the component (parent component).
+- The `templateUrl` property defines the HTML template for the component.
+- The `styleUrls` property defines the CSS styles for the component.
+- The `services` property defines the services used by the component.
 
 ## Angular Services
 
@@ -86,3 +93,130 @@ ng serve
 ```
 
 The app will be available at http://localhost:4200
+
+## Working with Components
+
+### First Component
+
+###### app.component.ts
+
+```ts
+import { Component } from "@angular/core";
+
+@Component({
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
+})
+export class AppComponent {
+  title = "My World";
+}
+```
+
+###### app.component.html
+
+```html
+<h1>Welcome to {{ title }}</h1>
+
+<!-- Run any js code -->
+{{2 + 5}}
+```
+
+###### Output
+
+```
+Welcome to My World
+7
+```
+
+### Create a new component
+
+```sh
+ng generate component components/navbar
+```
+
+This will create a new folder called `navbar` with the following files:
+
+- `navbar.component.ts`
+- `navbar.component.html`
+- `navbar.component.css`
+- `navbar.component.spec.ts`
+
+Now we can use the `navbar` component in the `app` component.
+
+###### app.component.html
+
+```html
+<main>
+  <app-navbar></app-navbar>
+</main>
+```
+
+### Passing data to a component
+
+###### navbar.component.html
+
+```html
+<nav>
+  <h1>{{title}}</h1>
+  <app-button color="green" text="Add"></app-button>
+</nav>
+```
+
+###### navbar.component.ts
+
+```ts
+export class ButtonComponent {
+  @Input() text: string;
+  @Input() color: string;
+}
+```
+
+###### button.component.html
+
+```html
+<button [ngStyle]="{'background': color}" class="btn">{{text}}</button>
+
+<!-- [ngStyle] is a directive -->
+```
+
+### Adding Events to a Component
+
+###### button.component.html
+
+```html
+<button (click)="onClick()" class="btn">{{text}}</button>
+```
+
+###### button.component.ts
+
+```ts
+export class ButtonComponent {
+  @Input() text: string;
+  @Output() btnClick = new EventEmitter();
+
+  onClick() {
+    this.btnClick.emit();
+  }
+}
+```
+
+The `btnClick` event will be emitted when the button is clicked. We can listen for this event in the `navbar` component or any other component that uses the `button` component.
+
+Every button click works differently. We can pass a function to the `btnClick` event (our custom event) and execute it when the button is clicked.
+
+###### navbar.component.html
+
+```html
+<app-button (btnClick)="addTask()" text="Add"></app-button>
+```
+
+###### navbar.component.ts
+
+```ts
+export class NavbarComponent {
+  addTask() {
+    console.log("Added Task");
+  }
+}
+```
