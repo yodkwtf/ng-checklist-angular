@@ -1,0 +1,22 @@
+.task {
+  background-color: #f4f4f4;
+  margin: 0.65rem;
+  padding: 0.75rem 1.25rem;
+  cursor: progress;
+  transition: all 0.3s ease-in-out;
+}
+
+.task:hover {
+  background-color: #e4e4e4;
+}
+
+.task.reminder {
+  border-left: 0.25rem solid #f00;
+}
+
+.task h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+}

@@ -220,3 +220,161 @@ export class NavbarComponent {
   }
 }
 ```
+
+## Looping through list of Items
+
+#### Case 1: Looping in same component
+
+###### app.component.ts
+
+```ts
+export class AppComponent {
+  title = "my-app";
+  name = "John Doe";
+  age = 30;
+  address = {
+    street: "50 Main st",
+    city: "Boston",
+    state: "MA",
+  };
+  hobbies = ["music", "movies", "sports"];
+}
+```
+
+###### app.component.html
+
+```html
+<h1>{{title}}</h1>
+<p>My name is {{name}} and I am {{age}} years old</p>
+<p>My address is {{address.street}}, {{address.city}}, {{address.state}}</p>
+<p>My hobbies are:</p>
+<ul>
+  <li *ngFor="let hobby of hobbies">{{hobby}}</li>
+  <!-- *ngFor is a directive -->
+</ul>
+```
+
+#### Case 2: Looping in a child component by passing array as input
+
+###### app.component.ts
+
+```ts
+export class AppComponent {
+  title = "my-app";
+  hobbies = ["music", "movies", "sports"];
+}
+```
+
+###### app.component.html (Parent)
+
+```html
+<h1>{{title}}</h1>
+
+<app-navbar [hobbies]="hobbies"></app-navbar>
+```
+
+###### navbar.component.ts
+
+```ts
+export class NavbarComponent {
+  @Input() hobbies: string[];
+}
+```
+
+###### navbar.component.html (Child)
+
+```html
+<ul>
+  <li *ngFor="let hobby of hobbies">{{hobby}}</li>
+</ul>
+```
+
+#### Case 3: Looping in a child component by passing single array item as input
+
+###### app.component.ts
+
+```ts
+export class AppComponent {
+  title = "my-app";
+  hobbies = ["music", "movies", "sports"];
+}
+```
+
+###### app.component.html (Parent)
+
+```html
+<h1>{{title}}</h1>
+
+<app-navbar *ngFor="let hobby of hobbies" [hobby]="hobby"></app-navbar>
+```
+
+###### navbar.component.ts
+
+```ts
+export class NavbarComponent {
+  @Input() hobby: string;
+}
+```
+
+###### navbar.component.html (Child)
+
+```html
+<li>{{hobby}}</li>
+```
+
+## Angular Font Awesome Integration
+
+There are multiple ways to integrate Font Awesome in Angular.
+
+#### Method 1: Using `ng add` command
+
+```sh
+ng add @fortawesome/angular-fontawesome
+```
+
+#### Method 2: Using `npm` command
+
+```sh
+npm install @fortawesome/fontawesome-svg-core
+npm install @fortawesome/free-solid-svg-icons
+npm install @fortawesome/angular-fontawesome
+```
+
+Now to use the icons in our components, we need to import the `FontAwesomeModule` in the `app.module.ts` file.
+
+###### app.module.ts
+
+```ts
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+
+@NgModule({
+  imports: [FontAwesomeModule],
+})
+export class AppModule {}
+```
+
+Now we can use the icons in our components.
+
+###### app.component.html
+
+```html
+<fa-icon icon="coffee"></fa-icon>
+```
+
+We can also use the icons in our components by importing the `faCoffee` icon.
+
+###### app.component.ts
+
+```ts
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+
+export class AppComponent {
+  faCoffee = faCoffee;
+}
+```
+
+###### app.component.html
+
+```html
+<fa-icon [icon]="faCoffee"></fa-icon>
+```
