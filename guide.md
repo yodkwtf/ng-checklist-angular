@@ -470,3 +470,50 @@ export class AppComponent {
 Here we are subscribing to the `getTasks()` method of the `TaskService` and assigning the result to the `tasks` property of the `AppComponent`. This is an asynchronous operation.
 
 It works similar to the `Promise` object and handling them using `then()` method.
+
+## Angular HTTP Client
+
+Angular provides a simplified client HTTP API for Angular applications, the `HttpClientModule` which is based on `XMLHttpRequest` interface exposed by browsers.
+
+#### Importing HttpClientModule
+
+In order to use the `HttpClient` service, we need to import it as a module in the `app.module.ts` file.
+
+###### app.module.ts
+
+```ts
+import { HttpClientModule } from "@angular/common/http";
+
+@NgModule({
+  imports: [HttpClientModule],
+})
+export class AppModule {}
+```
+
+#### Using the HttpClient service
+
+We need to pass the `HttpClient` service as a parameter to the constructor because Angular uses a mechanism called **Dependency Injection** to inject the `HttpClient` service into the `TaskService` service.
+
+This is similar to the way we injected the `TaskService` service into the `AppComponent`.
+
+###### task.service.ts
+
+```ts
+import { Observable } from "rxjs";
+import { Task } from "src/app/interfaces/Task";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+
+export class TaskService {
+  private apiUrl = "http://localhost:5000/tasks";
+
+  constructor(private http: HttpClient) {}
+
+  getTasks(): Observable<Task[]> {
+    // GET request
+    const tasks = this.http.get<Task[]>(this.apiUrl);
+    return tasks;
+  }
+}
+```
+
+This will return an `Observable` of type `Task[]` which we can subscribe to in the `AppComponent`.
