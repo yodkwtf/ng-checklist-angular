@@ -517,3 +517,61 @@ export class TaskService {
 ```
 
 This will return an `Observable` of type `Task[]` which we can subscribe to in the `AppComponent`.
+
+## Forms in Angular
+
+Before we can use the `ngModel` directive, we need to import the `FormsModule` in the `app.module.ts` file.
+
+###### app.module.ts
+
+```ts
+import { FormsModule } from "@angular/forms";
+
+@NgModule({
+  imports: [FormsModule],
+})
+export class AppModule {}
+```
+
+#### Two-way data binding
+
+Create a two-way data binding using `ngModel` directive.
+
+###### app.component.html
+
+```html
+<input type="text" [(ngModel)]="title" />
+```
+
+###### app.component.ts
+
+```ts
+export class AppComponent {
+  title: string = "";
+}
+```
+
+#### Form Submission
+
+We can use the `ngSubmit` directive to submit the form. This will call the `onSubmit()` method of the `AppComponent` when the form is submitted. We also don't need to do `preventDefault()` here.
+
+###### app.component.html
+
+```html
+<form (ngSubmit)="onSubmit()">
+  <input type="text" [(ngModel)]="title" name="title" />
+  <input type="submit" value="Save" />
+</form>
+```
+
+###### app.component.ts
+
+```ts
+export class AppComponent {
+  title: string = "";
+
+  onSubmit() {
+    console.log(this.title);
+  }
+}
+```

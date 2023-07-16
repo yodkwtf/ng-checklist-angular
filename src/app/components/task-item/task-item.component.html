@@ -1,6 +1,6 @@
 <div [ngClass]="{reminder: task.reminder}" class="task" (dblclick)="(handleReminder(task))">
   <h3>
-    {{task.text}}
+    {{task.task}}
     <fa-icon (click)="(handleDelete(task))" [ngStyle]="{'color': 'red'}" [icon]="faTimes">
     </fa-icon>
   </h3>
