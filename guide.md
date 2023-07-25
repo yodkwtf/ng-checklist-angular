@@ -575,3 +575,47 @@ export class AppComponent {
   }
 }
 ```
+
+## Routing in Angular
+
+Although we have the option to get the router setup by default when we create a new project using the `--routing` flag, we can also add it later.
+
+###### Import `RouterModule` to `app.module.ts`
+
+```ts
+import { RouterModule, Routes } from "@angular/router";
+```
+
+###### Add routes to `app.module.ts`
+
+```ts
+const appRoutes: Routes = [
+  { path: "", component: TasksComponent },
+  { path: "about", component: AboutComponent },
+];
+```
+
+###### Add `RouterModule` to `app.module.ts`
+
+```ts
+imports: [BrowserModule, HttpClientModule, FormsModule, RouterModule.forRoot(appRoutes)],
+```
+
+###### Add `router-outlet` to `app.component.html`
+
+```html
+<div class="container">
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>
+```
+
+###### Add `routerLink` to `header.component.html`
+
+```html
+<nav>
+  <a routerLink="/">Home</a>
+  <a routerLink="/about">About</a>
+</nav>
+```
