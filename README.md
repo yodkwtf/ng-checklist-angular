@@ -2,6 +2,12 @@
 
 **ng-checklist-angular** is a simple and efficient todo list application built with Angular. This repository contains the source code for the application, allowing you to run it locally or deploy it to your preferred hosting platform.
 
+## Live Preview
+
+You can access the live preview of the application by visiting the following URL: [NgChecklist - A ToDo List App](https://ngchecklist-dk.netlify.app/)
+
+![ng-checklist-angular](./src/assets/preview.png)
+
 ## Installation
 
 To get started with ng-checklist-angular, you need to have Node.js and npm (Node Package Manager) installed on your machine. If you don't have them, you can download and install them from the official Node.js website: [https://nodejs.org/](https://nodejs.org/).
