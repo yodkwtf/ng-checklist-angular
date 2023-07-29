@@ -1,27 +1,41 @@
-# TaskList
+# ToDo List Application - Angular Introduction
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+**ng-checklist-angular** is a simple and efficient todo list application built with Angular. This repository contains the source code for the application, allowing you to run it locally or deploy it to your preferred hosting platform.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To get started with ng-checklist-angular, you need to have Node.js and npm (Node Package Manager) installed on your machine. If you don't have them, you can download and install them from the official Node.js website: [https://nodejs.org/](https://nodejs.org/).
 
-## Code scaffolding
+1. Clone the repository to your local machine using the following command:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+   ```bash
+   git clone https://github.com/yodkwtf/ng-checklist-angular.git
+   ```
 
-## Build
+2. Navigate to the project directory:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   ```bash
+   cd ng-checklist-angular
+   ```
 
-## Running unit tests
+3. Install the required dependencies:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```bash
+   npm install
+   ```
 
-## Running end-to-end tests
+## Running the Application
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+To run the application, you need to execute the following command:
 
-## Further help
+```bash
+npm start
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+You also need to start the mocked backend using "json server" by executing the following command:
+
+```bash
+npm run server
+```
+
+Open your web browser and visit `http://localhost:4200/` to access the todo list application.
