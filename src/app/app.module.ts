@@ -13,6 +13,8 @@ import { TaskItemComponent } from './components/task-item/task-item.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { AboutComponent } from './components/about/about.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FootBarComponent } from './components/foot-bar/foot-bar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 const appRoutes: Routes = [
   { path: '', component: TasksComponent },
@@ -29,6 +31,8 @@ const appRoutes: Routes = [
     AddTaskComponent,
     AboutComponent,
     FooterComponent,
+    FootBarComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

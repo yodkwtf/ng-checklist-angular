@@ -1,6 +1,6 @@
 {
-  "name": "tasklist",
-  "version": "0.0.0",
+  "name": "ng-checklist",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -21,6 +21,7 @@
     "@angular/router": "^16.1.0",
     "@fortawesome/angular-fontawesome": "^0.13.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "json-server": "^0.17.3",
     "moment": "^2.29.4",

@@ -1,0 +1,46 @@
+footer {
+  color: #fff;
+  background: #111;
+  text-align: center;
+  width: 100%;
+  padding: 0.75rem;
+  letter-spacing: 1px;
+  cursor: initial;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer .link:hover,
+footer .icon i:hover {
+  color: #fff;
+}
+
+footer .link {
+  color: #00995e;
+  transition: 0.3s all linear;
+  font-weight: bold;
+  padding-right: 0.5rem;
+  border-right: 3px solid #fff;
+  margin-right: 1rem;
+}
+footer .icon {
+  font-size: 1.25rem;
+  vertical-align: middle;
+  line-height: 1;
+  margin-right: 0.5rem;
+}
+footer .icon i {
+  transition: 0.3s all linear;
+}
+
+#twitter {
+  color: #00a7e7;
+}
+#github {
+  color: #fff;
+}
+#linkedin {
+  color: #0073b1;
+}

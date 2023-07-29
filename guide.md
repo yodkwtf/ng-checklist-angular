@@ -150,6 +150,8 @@ Now we can use the `navbar` component in the `app` component.
 ```html
 <nav>
   <h1>{{title}}</h1>
+
+  <!-- Nav Button Component  -->
   <app-button color="green" text="Add"></app-button>
 </nav>
 ```
@@ -425,7 +427,7 @@ export class AppComponent {
 }
 ```
 
-## Observables & RxJS
+## Observables and RxJS
 
 - Observables are lazy. They don't do anything until something subscribes to them.
 - Observables are able to deliver values either synchronously or asynchronously.

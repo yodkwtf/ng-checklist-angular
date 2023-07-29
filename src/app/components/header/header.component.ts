@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  title: string = 'TaskList';
+  title: string = 'NgCheckList';
   showAddTask: boolean;
   subscription: Subscription;
 

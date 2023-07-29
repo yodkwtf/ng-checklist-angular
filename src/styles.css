@@ -1,14 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Poppins&display=swap");
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-body {
+main {
   font-family: "Poppins", sans-serif;
+  /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./images/bcg.jpg") center/cover fixed no-repeat; */
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  place-items: center;
+}
+
+.navbar,
+.footer {
+  width: 100%;
 }
 
 .container {
@@ -17,8 +27,9 @@ body {
   overflow: auto;
   min-height: 300px;
   border: 1px solid steelblue;
-  padding: 30px;
+  padding: 20px;
   border-radius: 5px;
+  width: 95%;
 }
 .btn {
   display: inline-block;
